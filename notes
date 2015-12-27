@@ -1,6 +1,25 @@
 Read:
-	React
-	Babel
-	Webpack
-	Redux
-	Phantom Js
+	React - front end framework for rendering, returning/completing actions, and updating the model.  Predicated on the FLUX method that is a departure from MVC or MVVM.  Seems closer to MVVM.  Very data driven.
+	Babel - transpile any js to browser specific needs.
+	Webpack - ??? front end and back end loading.  Caching specific settings per env.  what type of stuff is this caching?  not sure.
+	Redux - a store db that runs session storage on the server.
+	Phantom Js - ??? no idea
+	Express - A set of features for web and mobile.  Only middleware is: 
+	import Express from 'express';
+	app = new Express();
+		this equates to node
+		- environment specific routing (better handled by something closer to the model)
+		- err handling
+		- header req
+		- fs
+	your base router for actions.  js can we wired into this in a very promise based form like this projects ./bin/server file
+
+
+
+
+//flux(non mvc) and redux store operations
+//nosql - json db
+//firebase - runs js db with multiple sdks.  one for react/angular etc.
+//parse - no idea
+//sql - some other shit
+//mongodb - familiar

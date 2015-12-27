@@ -11,6 +11,7 @@ import {
     LoginSuccess,
     Survey,
     NotFound,
+    Test,
   } from 'containers';
 
 export default (store) => {
@@ -30,7 +31,7 @@ export default (store) => {
       checkAuth();
     }
   };
-
+ 
   /**
    * Please keep routes in alphabetical order
    */
@@ -49,6 +50,7 @@ export default (store) => {
       <Route path="about" component={About}/>
       <Route path="login" component={Login}/>
       <Route path="survey" component={Survey}/>
+      <Route path="test" component={Test}/>
       <Route path="widgets" component={Widgets}/>
 
       { /* Catch all route */ }

@@ -1,4 +1,5 @@
 import Express from 'express';
+import mysql from 'mysql';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import config from './config';
@@ -28,6 +29,12 @@ const proxy = httpProxy.createProxyServer({
   target: 'http://' + config.apiHost + ':' + config.apiPort,
   ws: true
 });
+const con = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database : 'react'
+});
 
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
@@ -38,6 +45,28 @@ app.use(Express.static(path.join(__dirname, '..', 'static')));
 app.use('/api', (req, res) => {
   proxy.web(req, res);
 });
+
+// con.connect(function(err){
+//   if(err){
+//     console.log('Error connecting to Db');
+//     return;
+//   }
+//   console.log('Connection established');
+// });
+
+
+// con.query('select * from Person as solution', function(err, rows, fields) {
+//   if (err) throw err;
+ 
+//   console.log('The solution is: ', rows);
+// });
+
+
+// con.end(function(err) {
+//   // The connection is terminated gracefully
+//   // Ensures all previously enqueued queries are still
+//   // before sending a COM_QUIT packet to the MySQL server.
+// });
 
 // added the error handling to avoid https://github.com/nodejitsu/node-http-proxy/issues/527
 proxy.on('error', (error, req, res) => {
@@ -62,6 +91,7 @@ app.use((req, res) => {
   const client = new ApiClient(req);
 
   const store = createStore(reduxReactRouter, getRoutes, createHistory, client);
+  console.log(store);
 
   function hydrateOnClient() {
     res.send('<!doctype html>\n' +

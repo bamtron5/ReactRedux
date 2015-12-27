@@ -11,6 +11,7 @@ import { pushState } from 'redux-router';
 import connectData from 'helpers/connectData';
 import config from '../../config';
 
+
 function fetchData(getState, dispatch) {
   const promises = [];
   if (!isInfoLoaded(getState())) {
