@@ -11,6 +11,16 @@ import ApiClient from './helpers/ApiClient';
 import io from 'socket.io-client';
 import {Provider} from 'react-redux';
 import {reduxReactRouter, ReduxRouter} from 'redux-router';
+import Firebase from 'firebase';
+
+const fireRef = new Firebase('https://torrid-heat-7637.firebaseio.com/people');
+
+
+fireRef.on('child_added', function(data) {
+  // do some stuff once
+  console.log(data.key());
+  console.log(data.val());
+});
 
 import getRoutes from './routes';
 import makeRouteHooksSafe from './helpers/makeRouteHooksSafe';
