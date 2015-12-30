@@ -11,16 +11,6 @@ import ApiClient from './helpers/ApiClient';
 import io from 'socket.io-client';
 import {Provider} from 'react-redux';
 import {reduxReactRouter, ReduxRouter} from 'redux-router';
-import Firebase from 'firebase';
-
-const fireRef = new Firebase('https://torrid-heat-7637.firebaseio.com/people');
-
-
-fireRef.on('child_added', function(data) {
-  // do some stuff once
-  console.log(data.key());
-  console.log(data.val());
-});
 
 import getRoutes from './routes';
 import makeRouteHooksSafe from './helpers/makeRouteHooksSafe';
@@ -37,11 +27,11 @@ const store = createStore(reduxReactRouter, makeRouteHooksSafe(getRoutes), scrol
 function initSocket() {
   const socket = io('', {path: '/api/ws', transports: ['polling']});
   socket.on('news', (data) => {
-    console.log(data);
+    //console.log(data);
     socket.emit('my other event', { my: 'data from client' });
   });
   socket.on('msg', (data) => {
-    console.log(data);
+    //console.log(data);
   });
 
   return socket;

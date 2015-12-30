@@ -1,5 +1,5 @@
 import Express from 'express';
-import mysql from 'mysql';
+//import mysql from 'mysql';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
 import config from './config';
@@ -29,12 +29,12 @@ const proxy = httpProxy.createProxyServer({
   target: 'http://' + config.apiHost + ':' + config.apiPort,
   ws: true
 });
-const con = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database : 'react'
-});
+// const con = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   database : 'react'
+// });
 
 app.use(compression());
 app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
