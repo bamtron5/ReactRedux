@@ -37,11 +37,9 @@ app.use((req, res) => {
     action(req, params)
       .then((result) => {
         res.json(result);
-        console.log(result);
       }, (reason) => {
         if (reason && reason.redirect) {
           res.redirect(reason.redirect);
-          console.log(res);
         } else {
           console.error('API ERROR:', pretty.render(reason));
           res.status(reason.status || 500).json(reason);
